@@ -28,3 +28,12 @@ class DataBase:
             course_name VARCHAR(10)
         );'''
         self.manager(sql, commit=True)
+
+    def create_table_students(self):
+        sql = '''CREATE TABLE IF NOT EXISTS students(
+            id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+            first_name VARCHAR(20),
+            last_name VARCHAR(20),
+            course_id INTEGER REFERENCES courses(id)
+        );'''
+        self.manager(sql, commit=True)
