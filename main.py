@@ -21,3 +21,10 @@ class DataBase:
                 elif fetchall:
                     result = cursor.fetchall()
             return result
+
+    def create_table_courses(self):
+        sql = '''CREATE TABLE IF NOT EXISTS courses(
+            id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+            course_name VARCHAR(10)
+        );'''
+        self.manager(sql, commit=True)
